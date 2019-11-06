@@ -130,6 +130,25 @@ public class SimpleParser3 {
             System.out.println("  Unary minus");
         }
     }
+    
+    
+    private static class VariableNode extends ExpNode {
+    	ExpNode variableNode;
+    	VariableNode (ExpNode variableNode) {
+    		assert variableNode != null;
+    		this.variableNode = variableNode;
+    	}
+    	//double value() {
+    	//	return xValue;
+    	//}
+    	@Override
+    	double value(double xValue) {
+    		return xValue;
+    	}
+    	void printStackCommands() {
+    		System.out.println("  Variable Node");
+    	}
+    }
 
 
     //    -------------------------------------------------------------------------------
