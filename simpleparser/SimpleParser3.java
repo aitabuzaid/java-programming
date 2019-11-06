@@ -131,12 +131,11 @@ public class SimpleParser3 {
         }
     }
     
-    
+    /**
+     * An expression node to represent a variable node
+     */
     private static class VariableNode extends ExpNode {
-    	//ExpNode operand;
     	VariableNode () {
-    		//assert operand != null;
-    		//this.operand = operand;
     	}
     	double value(double xValue) {
     		return xValue;
@@ -175,7 +174,10 @@ public class SimpleParser3 {
                 if ( TextIO.peek() != '\n' )
                     throw new ParseError("Extra data after end of expression.");
                 TextIO.getln();
-                System.out.println("\nValue is " + exp.value(0));
+                for (int i = 0; i < 4; i++) {
+                	System.out.println("\nValue at x = "+i+"is " + exp.value(i));
+                }
+                
                 System.out.println("\nOrder of postfix evaluation is:\n");
                 exp.printStackCommands();
             }
