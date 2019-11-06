@@ -41,7 +41,7 @@ public class SimpleParser3 {
      *  to be left on the stack).
      */
     abstract private static class ExpNode {
-        abstract double value(); 
+        abstract double value(double xValue); 
         abstract void printStackCommands();
     }
 
@@ -54,7 +54,7 @@ public class SimpleParser3 {
                 // Construct a ConstNode containing the specified number.
             number = val;
         }
-        double value() {
+        double value(double xValue) {
                 // The value of the node is the number that it contains.
             return number;
         }
@@ -80,11 +80,11 @@ public class SimpleParser3 {
             this.left = left;
             this.right = right;
         }
-        double value() {
+        double value(double xValue) {
                 // The value is obtained by evaluating the left and right
                 // operands and combining the values with the operator.
-            double x = left.value();
-            double y = right.value();
+            double x = left.value(xValue);
+            double y = right.value(xValue);
             switch (op) {
             case '+':  return x + y;
             case '-':  return x - y;
@@ -116,9 +116,9 @@ public class SimpleParser3 {
             assert operand != null;
             this.operand = operand;
         }
-        double value() {
+        double value(double xValue) {
                 // The value is the negative of the value of the operand.
-            double neg = operand.value();
+            double neg = operand.value(xValue);
             return -neg;
         }
         void printStackCommands() {
@@ -133,15 +133,11 @@ public class SimpleParser3 {
     
     
     private static class VariableNode extends ExpNode {
-    	ExpNode variableNode;
-    	VariableNode (ExpNode variableNode) {
-    		assert variableNode != null;
-    		this.variableNode = variableNode;
+    	//ExpNode operand;
+    	VariableNode () {
+    		//assert operand != null;
+    		//this.operand = operand;
     	}
-    	//double value() {
-    	//	return xValue;
-    	//}
-    	@Override
     	double value(double xValue) {
     		return xValue;
     	}
