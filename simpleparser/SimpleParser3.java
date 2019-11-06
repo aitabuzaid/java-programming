@@ -175,7 +175,7 @@ public class SimpleParser3 {
                 if ( TextIO.peek() != '\n' )
                     throw new ParseError("Extra data after end of expression.");
                 TextIO.getln();
-                System.out.println("\nValue is " + exp.value());
+                System.out.println("\nValue is " + exp.value(0));
                 System.out.println("\nOrder of postfix evaluation is:\n");
                 exp.printStackCommands();
             }
@@ -260,6 +260,10 @@ public class SimpleParser3 {
                 // The factor is a number.  Return a ConstNode.
             double num = TextIO.getDouble();
             return new ConstNode(num);
+        }
+        else if ( ch == 'x' || ch == 'X') {
+        	TextIO.getAnyChar();
+        	return new VariableNode();
         }
         else if ( ch == '(' ) {
                 // The factor is an expression in parentheses.
