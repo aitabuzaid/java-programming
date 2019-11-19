@@ -175,7 +175,7 @@ public class SimpleParser3 {
                     throw new ParseError("Extra data after end of expression.");
                 TextIO.getln();
                 for (int i = 0; i < 4; i++) {
-                	System.out.println("\nValue at x = "+i+"is " + exp.value(i));
+                	System.out.println("\nValue at x = "+i+" is " + exp.value(i));
                 }
                 
                 System.out.println("\nOrder of postfix evaluation is:\n");
