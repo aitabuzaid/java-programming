@@ -7,38 +7,27 @@ public class MinBribes {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] q = {3,1,2,4,5,6};
+		//int[] q = {3,1,2,4,5,6};
+		int[] q = {1,2,5,3,7,8,6,4};
 		minimumBribes(q);
 
 	}
 
-	static void minimumBribes(int[] q) {
-		int count = 0;
-		int max = q.length-1;
-		int temp;
-		int moves;
-		int i;
-		while(max >= 0) {
-			i = max;
-			while((i > 0) && (q[i] <= i+1))
-				i--;
-			moves = 0;
-			while((i <= max) && (q[i] != i+1)){
-				if (moves == 2) {
-					System.out.println("Too chaotic");
-					return;
-				}
-				temp = q[i+1];
-				q[i+1] = q[i];
-				q[i] = temp;
-				count++;
-				i++;
-				moves++;
-			}
-			if (q[i] == i+1) max = i-1;
-
-		}
-
-		System.out.println(count);
-	}
+    static void minimumBribes(int[] q) {
+        int count = 0;
+        int temp = -1;
+        for (int i = 0; i < q.length; i++) {
+            if (q[i] > i+3) {
+                System.out.println("Too chaotic");
+                return;
+            }
+            else if (q[i] > i+1)
+                count += q[i]-i-1;                
+            else if (q[i] <= i+1){
+                if (temp > q[i]) count++;
+                temp = q[i];
+            }
+        }
+        System.out.println(count);
+    }
 }
