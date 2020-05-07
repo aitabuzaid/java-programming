@@ -1,5 +1,6 @@
 package hackerrank;
 import java.util.*;
+import java.util.Map.Entry;
 
 public class MinBribes {
 
@@ -12,28 +13,38 @@ public class MinBribes {
 		//int[] q = {1,2,5,3,7,8,6,4};
 		//int[] q = {3,4,5,2,1};
 		int[] q = {3,4,2,1,7,8,6,5};
+		//int[] q = {5,1,2,3,7,8,6,4};
 		minimumBribes(q);
 
 	}
 
+	
 	static void minimumBribes(int[] q) {
-		HashMap<Integer, Integer> dict = new HashMap<Integer,Integer>();
+		
+		TreeMap<Integer, Integer> map = new TreeMap<Integer, Integer>();
 		int count = 0;
+		int k;
+		Entry<Integer, Integer> entry;
 		for (int i = 0; i < q.length; i++) {
-			dict.put(q[i], 0);
-			for (int key :dict.keySet()){
-				if (q[i] < key) {
-					if (dict.get(key)+1 > 2) {
-						System.out.println("Too chaotic");
-						return;
-					}
-					else{
-						dict.put(key, dict.get(key)+1);
-						count++;
-					}
+			k = q[i];
+			//System.out.println("\n k: "+k);
+			map.put(k, 0);
+			while(map.higherEntry(k) != null){
+				
+				entry = map.higherEntry(k);
+				//System.out.println("key: "+entry.getKey());
+				//System.out.println("val: "+entry.getValue());
+				if (entry.getValue()+1 > 2) {
+					System.out.println("Too chaotic");
+					return;
 				}
+				k = entry.getKey();
+				map.put(k, entry.getValue()+1);
+				count++;
+				
 			}
 		}
-        System.out.println(count);
-    }
+		System.out.println(count);
+	}
+		
 }
