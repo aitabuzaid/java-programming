@@ -16,6 +16,21 @@ public class MinSwaps {
 
 	
 	static void minimumSwaps(int[] arr) {
-	
+		int i = 0, swaps = 0;
+		int temp;
+		while(i < arr.length){
+			if (arr[i] == i+1) i++;
+			else{
+				temp = arr[arr[i]-1];
+				arr[arr[i]-1] = arr[i];
+				arr[i] = temp;
+				swaps++;
+			}
+			//for (int j = 0; j<arr.length; j++)
+			//	System.out.print(arr[j]+" ");
+			//System.out.println();
+		}
+		System.out.println(swaps);
 	}		
 }
+ 
