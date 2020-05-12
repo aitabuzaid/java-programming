@@ -13,6 +13,16 @@ public class ArrayManipulation {
 		System.out.println(arrayManipulation(n,arr));
 
 	}
+	/**
+	 * Initial attempt to solve the array manipulation 
+	 * challenge as described in hacker rank.
+	 * I used a brute force technique to find the largest
+	 * number after executing all queries.
+	 * @param n: size of array
+	 * @param queries: an m x 3 matrix describing the 
+	 * 		  m queries
+	 * @return the maximum number in the whole array
+	 */
 
 	static long arrayManipulation(int n, int[][] queries) {
         long max = 0;
