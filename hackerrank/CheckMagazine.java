@@ -16,16 +16,19 @@ public class CheckMagazine {
 
 
 	static void checkMagazine(String[] magazine, String[] note) {
-		HashSet<String> table = new HashSet<String>();
+		HashMap<String,Integer> table = new HashMap<String,Integer>();
 		for (int i = 0; i < magazine.length; i++) {
-			table.add(magazine[i]);
+			if(table.containsKey(magazine[i]))
+				table.put(magazine[i], table.get(magazine[i])+1);
+			else
+				table.put(magazine[i], 1);
 		}
 		for (int i = 0; i < note.length; i++) {
-			if (!table.contains(note[i])) {
+			if (!table.containsKey(note[i]) || (table.get(note[i]) < 1)) {
 				System.out.print("No");
 				return;
 			}
-			table.remove(note[i]);
+			table.put(note[i],table.get(note[i])-1);
 		}
 		System.out.print("Yes");
     }
