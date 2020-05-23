@@ -11,7 +11,16 @@ public class TwoStrings {
 
     // Complete the twoStrings function below.
     static String twoStrings(String s1, String s2) {
-    	return "";
+    	HashSet<Character> table = new HashSet<Character>();
+    	for (int i = 0; i < s1.length(); i++) {
+    		table.add(s1.charAt(i));
+    	}
+    	for (int i = 0; i < s2.length(); i++) {
+    		if (!table.contains(s2.charAt(0))) {
+    			return "No";
+    		}
+    	}
+    	return "Yes";
     }
 
     private static final Scanner scanner = new Scanner(System.in);
