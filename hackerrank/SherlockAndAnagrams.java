@@ -12,11 +12,21 @@ public class SherlockAndAnagrams {
 
     // Complete the sherlockAndAnagrams function below.
     static int sherlockAndAnagrams(String s) {
+    	HashMap<String,LinkedList<Integer[]>> map = new HashMap<String,LinkedList<Integer[]>>();
     	for(int len = 1; len <= s.length(); len++) {
     		for(int i = 0; i < s.length()-len+1; i++) {
-    			System.out.println(s.substring(i,i+len));
+    			
+    			LinkedList<Integer[]> list = map.get(s.substring(i,i+len));
+    			if (list == null) {
+    				list = new LinkedList<Integer[]>();
+    			}
+    			Integer[] tempArr = {i,i+len};
+    			list.add(tempArr);
+    			map.put(s.substring(i,i+len), list);
+    			//System.out.println(s.substring(i,i+len));
     		}
     	}
+    	System.out.println(map);
     	return 0;
     }
 
