@@ -17,16 +17,29 @@ public class SherlockAndAnagrams {
     		for(int i = 0; i < s.length()-len+1; i++) {
     			
     			LinkedList<Integer[]> list = map.get(s.substring(i,i+len));
+    			
     			if (list == null) {
     				list = new LinkedList<Integer[]>();
     			}
-    			Integer[] tempArr = {i,i+len};
+    			Integer[] tempArr = {i,i+len-1};
     			list.add(tempArr);
     			map.put(s.substring(i,i+len), list);
     			//System.out.println(s.substring(i,i+len));
     		}
     	}
-    	System.out.println(map);
+    	for (String str: map.keySet()) {
+    		System.out.println(str);
+    		//System.out.println());
+    		LinkedList<Integer[]> list = map.get(str);
+    		
+    		Iterator<Integer[]> iter = list.iterator();
+    		while(iter.hasNext()) {
+    			Integer[] arr = iter.next();
+    			System.out.println(arr[0]+" "+arr[1]);
+    		}
+    		System.out.println();
+    	}
+    	
     	return 0;
     }
 
