@@ -8,45 +8,43 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class SherlockAndAnagrams {
+public class Solution {
 
     // Complete the sherlockAndAnagrams function below.
     static int sherlockAndAnagrams(String s) {
-    	HashMap<String,LinkedList<Integer[]>> map = new HashMap<String,LinkedList<Integer[]>>();
-    	for(int len = 1; len <= s.length(); len++) {
-    		for(int i = 0; i < s.length()-len+1; i++) {
-    			
-    			LinkedList<Integer[]> list = map.get(s.substring(i,i+len));
-    			
-    			if (list == null) {
-    				list = new LinkedList<Integer[]>();
-    			}
-    			Integer[] tempArr = {i,i+len-1};
-    			list.add(tempArr);
-    			map.put(s.substring(i,i+len), list);
-    			//System.out.println(s.substring(i,i+len));
-    		}
-    	}
-    	for (String str: map.keySet()) {
-    		System.out.println(str);
-    		//System.out.println());
-    		LinkedList<Integer[]> list = map.get(str);
-    		
-    		Iterator<Integer[]> iter = list.iterator();
-    		while(iter.hasNext()) {
-    			Integer[] arr = iter.next();
-    			System.out.println(arr[0]+" "+arr[1]);
-    		}
-    		System.out.println();
-    	}
-    	
-    	return 0;
+        HashMap<String,Integer> map = new HashMap<String,Integer>();
+        for(int len = 1; len <= s.length(); len++) {
+            for(int i = 0; i < s.length()-len+1; i++) {
+                char[] arr = s.substring(i,i+len).toCharArray();
+                Arrays.sort(arr);
+                String sortedString = new String (arr);
+                Integer count = map.get(sortedString);
+                
+                if (count == null) {
+                    map.put(sortedString,1);
+                }
+                else{
+                    map.put(sortedString,count+1);
+                }
+
+            }
+        }
+        
+        for (String str: map.keySet()) {
+            System.out.println(str);
+            
+            System.out.println(map.get(str));
+            
+            System.out.println();
+        }
+
+        return 0;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int q = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
@@ -56,11 +54,11 @@ public class SherlockAndAnagrams {
 
             int result = sherlockAndAnagrams(s);
 
-            //bufferedWriter.write(String.valueOf(result));
-            //bufferedWriter.newLine();
+            bufferedWriter.write(String.valueOf(result));
+            bufferedWriter.newLine();
         }
 
-        //bufferedWriter.close();
+        bufferedWriter.close();
 
         scanner.close();
     }
