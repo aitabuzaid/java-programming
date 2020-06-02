@@ -29,16 +29,13 @@ public class Solution {
 
             }
         }
-        
+        int sum = 0, temp = 0;
         for (String str: map.keySet()) {
-            System.out.println(str);
-            
-            System.out.println(map.get(str));
-            
-            System.out.println();
+            temp = map.get(str);
+            sum += (int)(temp * (temp-1)/2);
         }
 
-        return 0;
+        return sum;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
