@@ -29,13 +29,23 @@ public class CountTriplets {
 					else
 						map.put(arr.get((int)i), (long)1);
 				}
-				else
-					map.put(arr.get((int)i), (long)0);				
+				//else
+				//	map.put(arr.get((int)i), (long)0);				
 			}
 		}
-		System.out.println(map);
-		return 0;
+		Object[] keyArr = map.keySet().toArray();
+		//System.out.println(map);
+		long temp = 0;
+		for (int i = 0; i < keyArr.length-2; i++)
+		{
+			temp +=  (map.get(keyArr[i])*map.get(keyArr[i+1])*map.get(keyArr[i+2]));
+			//System.out.println(map.get(keyArr[i]));
+		}
+			
+		return temp;
 	}
+	
+	
 	
 	public static boolean isPower(long x, long r) {
 		if (r == 0) return false;
@@ -50,16 +60,29 @@ public class CountTriplets {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(isPower(27,0));
+		//System.out.println(isPower(27,0));
 		List<Long> list = new ArrayList<Long>();
+		/*
+		list.add((long)1);
+		list.add((long)2);
+		list.add((long)2);
+		list.add((long)4);
+		*/
+		/*
 		list.add((long)1);
 		list.add((long)3);
-		list.add((long)3);
-		list.add((long)4);
+		list.add((long)9);
 		list.add((long)9);
 		list.add((long)27);
-		System.out.println(list);
-		System.out.println(countTriplets(list,(long)3));
+		list.add((long)81);
+		*/
+		list.add((long)1);
+		list.add((long)5);
+		list.add((long)5);
+		list.add((long)25);
+		list.add((long)125);
+		//System.out.println(list);
+		System.out.println(countTriplets(list,(long)5));
 
 	}
 }
