@@ -38,14 +38,25 @@ public class CountTriplets {
 		return 0;
 	}
 	
-	
+	public static boolean isPower(long x, long r) {
+		if (r == 0) return false;
+		if (r == 1) return true;
+		if (x%r != 0) return false;
+		long temp = x/r;
+		while (temp > 1) {
+			if (temp%r != 0) return false;
+			temp = temp/r;			
+		}
+		return true;
+	}
 
 	public static void main(String[] args) {
+		System.out.println(isPower(27,0));
 		List<Long> list = new ArrayList<Long>();
 		list.add((long)1);
 		list.add((long)3);
 		list.add((long)3);
-		//list.add((long)4);
+		list.add((long)4);
 		list.add((long)9);
 		list.add((long)27);
 		System.out.println(list);
