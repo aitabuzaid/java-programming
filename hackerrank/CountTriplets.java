@@ -22,8 +22,7 @@ public class CountTriplets {
 				map.put(arr.get((int)i), (long)1);
 			else
 			{
-				long test = arr.get((int)i)/arr.get((int)i-1);
-				if( test == r | test == 1 )
+				if( isPower(arr.get((int)i),r))
 				{
 					if (map.containsKey(arr.get((int)i)))
 						map.put(arr.get((int)i), map.get(arr.get((int)i))+1);
