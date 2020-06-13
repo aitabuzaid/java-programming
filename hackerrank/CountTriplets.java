@@ -16,38 +16,33 @@ public class CountTriplets {
 	// Complete the countTriplets function below.
 	static long countTriplets(List<Long> arr, long r) {
 		TreeMap<Long, Long> map = new TreeMap<Long, Long>();
-		for (long i = 0; i < arr.size(); i++)
+		for (int i = 0; i < arr.size(); i++)
 		{
-			if (i == 0)
-				map.put(arr.get((int)i), (long)1);
-			else
+			if( isPower(arr.get(i),r))
 			{
-				if( isPower(arr.get((int)i),r))
-				{
-					if (map.containsKey(arr.get((int)i)))
-						map.put(arr.get((int)i), map.get(arr.get((int)i))+1);
-					else
-						map.put(arr.get((int)i), (long)1);
-				}
-				//else
-				//	map.put(arr.get((int)i), (long)0);				
+				if (map.containsKey(arr.get(i)))
+					map.put(arr.get(i), map.get(arr.get(i))+1);
+				else
+					map.put(arr.get(i), (long)1);
 			}
 		}
 		Object[] keyArr = map.keySet().toArray();
 		//System.out.println(map);
+		if (keyArr.length < 3)
+			return 0;
 		long temp = 0;
-		for (int i = 0; i < keyArr.length-2; i++)
-		{
-			temp +=  (map.get(keyArr[i])*map.get(keyArr[i+1])*map.get(keyArr[i+2]));
-			//System.out.println(map.get(keyArr[i]));
+		for (int i = 0; i < keyArr.length-2; i++) {
+			if (((long)keyArr[i+1]/(long)keyArr[i] == r) && ((long)keyArr[i+2]/(long)keyArr[i+1] == r))
+				temp +=  (map.get(keyArr[i])*map.get(keyArr[i+1])*map.get(keyArr[i+2]));
 		}
-			
+
 		return temp;
 	}
-	
-	
-	
+
+
+
 	public static boolean isPower(long x, long r) {
+		if (x == 1) return true;
 		if (r == 0) return false;
 		if (r == 1) return true;
 		if (x%r != 0) return false;
@@ -67,7 +62,7 @@ public class CountTriplets {
 		list.add((long)2);
 		list.add((long)2);
 		list.add((long)4);
-		*/
+		 */
 		/*
 		list.add((long)1);
 		list.add((long)3);
@@ -75,7 +70,7 @@ public class CountTriplets {
 		list.add((long)9);
 		list.add((long)27);
 		list.add((long)81);
-		*/
+		 */
 		list.add((long)1);
 		list.add((long)5);
 		list.add((long)5);
