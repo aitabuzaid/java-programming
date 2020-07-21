@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class MaxToys {
 
     // Complete the maximumToys function below.
     static int maximumToys(int[] prices, int k) {
@@ -35,6 +35,14 @@ public class Solution {
         int temp = a[x];
         a[x] = a[y];
         a[y] = temp;
+    }
+    
+    private static void quickSort(int[] arr) {
+    	quickSort(arr, 0, arr.length);
+    }
+    
+    private static void quickSort(int[] arr, int min, int max) {
+    	int k = (min + max) / 2;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
