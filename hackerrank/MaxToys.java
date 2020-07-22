@@ -43,6 +43,7 @@ public class MaxToys {
     
     private static void quickSort(int[] arr, int min, int max) {
     	int k = (min + max) / 2;
+    	swap(arr, k, max-1);
     }
 
     private static final Scanner scanner = new Scanner(System.in);
