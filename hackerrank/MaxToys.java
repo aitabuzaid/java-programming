@@ -1,3 +1,5 @@
+package hackerrank;
+
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -38,42 +40,37 @@ public class MaxToys {
     }
     
     private static void quickSort(int[] arr) {
-    	quickSort(arr, 0, arr.length);
+    	quickSort(arr, 0, arr.length-1);
     }
     
     private static void quickSort(int[] arr, int min, int max) {
-    	int k = (min + max) / 2;
-    	swap(arr, k, max-1);
+    	int k = (min + max) / 2;    
+    	System.out.println(k);
+    	swap(arr, k, max);
+    	int p = pivot(arr, min, max-1, arr[max]);
+    	swap(arr, max, p);
+    	if (p > min) quickSort(arr, min, p);
+    	if (p < max) quickSort(arr, p, max);
+    }
+    
+    private static int pivot(int[] arr, int min, int max, int pValue) {
+    	int i = min;
+    	int j = max;
+    	while (i < j) {
+    		if (arr[i] <= pValue)
+    			i++;
+    		else
+    			swap(arr, i, j--);
+    	}
+    	return i;
     }
 
-    private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
-
-        String[] nk = scanner.nextLine().split(" ");
-
-        int n = Integer.parseInt(nk[0]);
-
-        int k = Integer.parseInt(nk[1]);
-
-        int[] prices = new int[n];
-
-        String[] pricesItems = scanner.nextLine().split(" ");
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-        for (int i = 0; i < n; i++) {
-            int pricesItem = Integer.parseInt(pricesItems[i]);
-            prices[i] = pricesItem;
+    public static void main(String[] args) {
+        int[] arr = {0,4,3,12,1,5};
+        quickSort(arr);
+        for (int i = 0; i < arr.length; i++) {
+        	System.out.print(arr[i]+" ");
         }
-
-        int result = maximumToys(prices, k);
-
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
-
-        scanner.close();
     }
 }
