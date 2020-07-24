@@ -48,9 +48,14 @@ public class MaxToys {
     	System.out.println(k);
     	swap(arr, k, max);
     	int p = pivot(arr, min, max-1, arr[max]);
+ 
+    	for (int i = 0; i < arr.length; i++) {
+        	System.out.print(arr[i]+" ");
+        }
+    	System.out.println();
     	swap(arr, max, p);
-    	if (p > min) quickSort(arr, min, p);
-    	if (p < max) quickSort(arr, p, max);
+    	if (p > min+1) quickSort(arr, min, p-1);
+    	if (p < max-1) quickSort(arr, p+1, max);
     }
     
     private static int pivot(int[] arr, int min, int max, int pValue) {
@@ -62,7 +67,7 @@ public class MaxToys {
     		else
     			swap(arr, i, j--);
     	}
-    	return i;
+    	return i+1;
     }
 
 
