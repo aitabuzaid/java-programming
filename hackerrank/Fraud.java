@@ -30,6 +30,15 @@ public class Fraud {
     		}
     		else {
     			int query = expenditure[i-d];
+    			int min = 0, max = d;
+    			int loc = (min+max)/2;
+    			while (query != arr[loc]) {
+    				if (query > arr[loc])
+    					min = loc+1;
+    				else
+    					max = loc-1;
+    				loc = (min+max)/2;    					
+    			}    			
     		}
     	}
     	return count;
@@ -38,7 +47,21 @@ public class Fraud {
 
     public static void main(String[] args)  {
     	int[] exp = {1,3,2,5,1,2,4,6,10,3,2,9};
-    	int d = 3;
+    	int d = 10;
+    	/*
+    	Arrays.sort(exp);
+		int min = 0, max = exp.length;
+		int loc = (min+max)/2;
+    	while (d != exp[loc]) {
+			if (d > exp[loc])
+				min = loc+1;
+			else
+				max = loc-1;
+			loc = (min+max)/2;    					
+		}
+    	System.out.println(loc);
+    	System.out.println(exp[loc]);
+    	*/
     	System.out.println(activityNotifications(exp, d));
     }
 }
