@@ -12,10 +12,17 @@ public class AltChar {
 
     // Complete the alternatingCharacters function below.
     static int alternatingCharacters(String s) {
-    	return 0;
-
+    	Stack<Character> stack = new Stack<Character>();
+    	int count = 0;
+    	stack.add(s.charAt(0));
+    	for (int i = 1; i < s.length(); i++) {
+    		if (stack.peek().charValue() != s.charAt(i))
+    			stack.add(s.charAt(i));
+    		else
+    			count++;
+    	}
+    	return count;
     }
-
 
     public static void main(String[] args) {
     	System.out.println(alternatingCharacters("AABBAA"));
