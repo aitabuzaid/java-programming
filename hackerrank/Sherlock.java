@@ -22,7 +22,9 @@ public class Sherlock {
         
         Integer val = null;
         boolean flag = false;
+        int counter = 0;
         for (char ch: map.keySet()) {
+        	counter++;
         	if(val == null)
         		val = map.get(ch);
         	else {
@@ -32,7 +34,7 @@ public class Sherlock {
         			flag = true;
         			continue;
         		}
-        		else if (!flag && (val-1 == map.get(ch))) {
+        		else if (!flag && (val-1 == map.get(ch)) && counter < 3) {
         			flag = true;
         			val = map.get(ch);
         			continue;
@@ -47,7 +49,7 @@ public class Sherlock {
 
 
     public static void main(String[] args){
-        System.out.println(isValid("AABBC"));
+        System.out.println(isValid("AAAABBBBCC"));
     }
 }
 
