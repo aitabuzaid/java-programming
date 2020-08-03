@@ -30,11 +30,11 @@ public class Sherlock {
         	else {
         		if (val == map.get(ch))
         			continue;
-        		else if (!flag && (val == map.get(ch)-1)) {
+        		else if (!flag && (val < map.get(ch))) {
         			flag = true;
         			continue;
         		}
-        		else if (!flag && (val-1 == map.get(ch)) && counter < 3) {
+        		else if (!flag && (val > map.get(ch)) && counter < 3) {
         			flag = true;
         			val = map.get(ch);
         			continue;
@@ -49,7 +49,7 @@ public class Sherlock {
 
 
     public static void main(String[] args){
-        System.out.println(isValid("AAAABBBBCC"));
+        System.out.println(isValid("abcdefghhgfedecba"));
     }
 }
 
