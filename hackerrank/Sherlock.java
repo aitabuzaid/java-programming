@@ -34,8 +34,11 @@ public class Sherlock {
 			else if (counter == 3) {
 				if (val1 == val2)
 					val = val1;
-				else if ((val1 == map.get(ch)) || (val2 == map.get(ch)))
+				else if ((val1 == map.get(ch)) || (val2 == map.get(ch))) {
 					val = map.get(ch);
+					flag = true;
+				}
+					
 				else
 					return "NO";
 			}
