@@ -20,38 +20,28 @@ public class Sherlock {
 				map.put(s.charAt(i), map.get(s.charAt(i))+1);
 		}
 
-		Integer val1 = null;
-		Integer val2 = null;
 		Integer val = null;
 		boolean flag = false;
 		int counter = 0;
 		for (char ch: map.keySet()) {
 			counter++;
-			if (counter == 1)
-				val1 = map.get(ch);
-			else if (counter == 2)
-				val2 = map.get(ch);
-			else if (counter == 3) {
-				if (val1 == val2)
-					val = val1;
-				else if ((val1 == map.get(ch)) || (val2 == map.get(ch))) {
-					val = map.get(ch);
-					flag = true;
-				}
-					
-				else
-					return "NO";
-			}
-			if (counter >= 3) {
+			if(val == null)
+				val = map.get(ch);
+			else {
 				if (val == map.get(ch))
 					continue;
-				else if (!flag && (val != map.get(ch))) {
+				else if (!flag && ( (val == map.get(ch)-1) || (map.get(ch)==1) )) {
 					flag = true;
+					continue;
+				}
+				else if (!flag && (val-1 == map.get(ch)) && counter < 3) {
+					flag = true;
+					val = map.get(ch);
 					continue;
 				}
 				else
 					return "NO";
-			}	
+			}        		
 		}
 		return "YES";
 
@@ -59,7 +49,9 @@ public class Sherlock {
 
 
 	public static void main(String[] args){
-		System.out.println(isValid("abcdfghhgfeeedcba"));
+		System.out.println(isValid("AABBCCC"));
+		System.out.println(isValid("AAAABBBBCCCC"));
 	}
 }
+
 
