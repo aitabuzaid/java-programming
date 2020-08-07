@@ -24,34 +24,40 @@ public class Sherlock {
 		boolean flag = false;
 		int counter = 0;
 		for (char ch: map.keySet()) {
+			//System.out.println(ch);
+			//System.out.println(map.get(ch));
 			counter++;
 			if(val == null)
 				val = map.get(ch);
-			else {
-				if (val == map.get(ch))
-					continue;
-				else if (!flag && ( (val == map.get(ch)-1) || (map.get(ch)==1) )) {
-					flag = true;
-					continue;
-				}
-				else if (!flag && (val-1 == map.get(ch)) && counter < 3) {
-					flag = true;
-					val = map.get(ch);
-					continue;
-				}
-				else
-					return "NO";
-			}        		
-		}
+
+			if (val == map.get(ch))
+				continue;
+			else if (!flag && (val == map.get(ch)-1)) {
+				flag = true;
+				continue;
+			}
+			else if (!flag && (map.get(ch) == val-1) && (counter < 3)) {
+				flag = true;
+				val = map.get(ch);
+				continue;
+			}
+			else if (!flag && (map.get(ch) == 1)) {
+				flag = true;
+				continue;
+			}
+			else
+				return "NO";
+		}        		
+
 		return "YES";
 
 	}
 
 
 	public static void main(String[] args){
-		System.out.println(isValid("AABBCCC"));
-		System.out.println(isValid("AAAABBBBCCCC"));
+		//System.out.println(isValid("abcdfghhgfeeedcba"));
+		System.out.println(isValid("aaabcde"));
+
 	}
 }
-
 
