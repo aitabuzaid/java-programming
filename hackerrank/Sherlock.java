@@ -36,12 +36,8 @@ public class Sherlock {
 				flag = true;
 				continue;
 			}
-			else if (!flag && (map.get(ch).equals(val-1)) && (counter < 3)) {
-				flag = true;
-				val = map.get(ch);
-				continue;
-			}
-			else if (!flag && (val == 1) && (map.get(ch) > 1) && (counter < 3)) {
+			else if ((map.get(ch).equals(val-1) || (val == 1 && map.get(ch) > 1))
+					&& (counter < 3)) {
 				flag = true;
 				val = map.get(ch);
 				continue;
