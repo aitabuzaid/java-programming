@@ -12,8 +12,14 @@ public class MaxMin {
 
     // Complete the maxMin function below.
     static int maxMin(int k, int[] arr) {
-
-    	return 1;
+    	Arrays.sort(arr);
+    	int min;
+    	min = arr[k-1]-arr[0];
+    	for (int i = 1; i < arr.length-k; i++) {
+    		if ((arr[i+k-1]-arr[i]) < min)
+    			min = arr[i+k-1]-arr[i];
+    	}
+    	return min;
     }
 
 
