@@ -15,7 +15,7 @@ public class MaxMin {
     	Arrays.sort(arr);
     	int min;
     	min = arr[k-1]-arr[0];
-    	for (int i = 1; i < arr.length-k; i++) {
+    	for (int i = 1; i < arr.length-k+1; i++) {
     		if ((arr[i+k-1]-arr[i]) < min)
     			min = arr[i+k-1]-arr[i];
     	}
