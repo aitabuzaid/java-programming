@@ -9,7 +9,7 @@ import java.util.regex.*;
 public class SwapNodes {
 	
 	static class Node {
-		Node left, right;
+		private Node left, right;
 		int val;
 		Node (int val) {
 			this.val = val;
@@ -45,8 +45,12 @@ public class SwapNodes {
 
     }
     
-    static void inOrderPrint(int[][] indexes) {
-    	
+    static void inOrderPrint(Node node) {
+    	if (node.getLeft() != null)
+    		inOrderPrint(node.getLeft());
+    	System.out.print(node.val+" ");
+    	if (node.getRight() != null)
+    		inOrderPrint(node.getRight());
     }
 
     private static final Scanner scanner = new Scanner(System.in);
