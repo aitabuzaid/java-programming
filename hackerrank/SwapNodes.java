@@ -41,8 +41,8 @@ public class SwapNodes {
         /*
          * Write your code here.
          */
-    	
-
+    	int[][] result = null;
+    	return result;
     }
     
     static void inOrderPrint(Node node) {
