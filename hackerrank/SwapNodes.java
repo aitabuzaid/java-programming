@@ -52,6 +52,20 @@ public class SwapNodes {
     	if (node.getRight() != null)
     		inOrderPrint(node.getRight());
     }
+    
+    static void inOrderPrint(int[][] indexes) {
+    	int i = 0;
+    	int j = 0;
+    	inOrderPrint(i, j, indexes);
+    }
+    
+    static void inOrderPrint(int i, int j, int[][] indexes) {
+    	if (indexes[2*i+j][0] != -1)
+    		inOrderPrint(2*i+j, 0, indexes);
+    	System.out.print(indexes[i][j]+" ");
+    	if (indexes[2*i+j][1] != -1)
+    		inOrderPrint(2*i+j, 1, indexes);
+    }
 
     private static final Scanner scanner = new Scanner(System.in);
 
