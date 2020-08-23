@@ -54,23 +54,31 @@ public class SwapNodes {
     }
     
     static void inOrderPrint(int[][] indexes) {
-    	int i = 0;
-    	int j = 0;
-    	inOrderPrint(i, j, indexes);
+    	inOrderPrint(0, 0, indexes);
     }
     
     static void inOrderPrint(int i, int j, int[][] indexes) {
-    	if (indexes[2*i+j][0] != -1)
-    		inOrderPrint(2*i+j, 0, indexes);
-    	System.out.print(indexes[i][j]+" ");
-    	if (indexes[2*i+j][1] != -1)
-    		inOrderPrint(2*i+j, 1, indexes);
+    	if (i == 0) {
+    		if (indexes[1][0] != -1)
+        		inOrderPrint(1, 0, indexes);
+        	System.out.print(indexes[i][j]+" ");
+        	if (indexes[1][1] != -1)
+        		inOrderPrint(1, 1, indexes);
+    	}
+    	else {
+    		if (indexes[2*i+j][0] != -1)
+        		inOrderPrint(2*i+j, 0, indexes);
+        	System.out.print(indexes[i][j]+" ");
+        	if (indexes[2*i+j][1] != -1)
+        		inOrderPrint(2*i+j, 1, indexes);
+    	}
+    	
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
 
         int n = Integer.parseInt(scanner.nextLine().trim());
 
@@ -93,25 +101,28 @@ public class SwapNodes {
             int queriesItem = Integer.parseInt(scanner.nextLine().trim());
             queries[queriesItr] = queriesItem;
         }
+        
+        //for (int i = 0; i < indexes.length; i++)
+        //		System.out.print(indexes[i][0]+" "+indexes[i][1]+"\n");
+        inOrderPrint(indexes);
 
+        /*
         int[][] result = swapNodes(indexes, queries);
 
         for (int resultRowItr = 0; resultRowItr < result.length; resultRowItr++) {
             for (int resultColumnItr = 0; resultColumnItr < result[resultRowItr].length; resultColumnItr++) {
-                bufferedWriter.write(String.valueOf(result[resultRowItr][resultColumnItr]));
+                System.out.println(String.valueOf(result[resultRowItr][resultColumnItr]));
 
                 if (resultColumnItr != result[resultRowItr].length - 1) {
-                    bufferedWriter.write(" ");
+                	System.out.println(" ");
                 }
             }
 
             if (resultRowItr != result.length - 1) {
-                bufferedWriter.write("\n");
+            	System.out.println("\n");
             }
         }
+        */
 
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
     }
 }
