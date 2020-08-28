@@ -8,32 +8,6 @@ import java.util.regex.*;
 
 public class SwapNodes {
 
-	static class Node {
-		private Node left, right;
-		int val;
-		Node (int val) {
-			this.val = val;
-			this.left = null;
-			this.right = null;
-		}
-
-		void setLeft (Node left) {
-			this.left = left;
-		}
-
-		void setRight (Node right) {
-			this.right = right;
-		}
-
-		Node getLeft () {
-			return this.left;
-		}
-
-		Node getRight () {
-			return this.right;
-		}
-	}
-
 	/*
 	 * Complete the swapNodes function below.
 	 */
