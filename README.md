@@ -1,2 +1,2 @@
 # java-programming
-A collection of programming exercises to solve Hackerrank problems using Java.
+A collection of programming challenges from Hackerrank's job interviewing series. I use Java for all solutions. 
