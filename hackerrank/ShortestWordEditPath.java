@@ -3,29 +3,31 @@ package hackerrank;
 import java.io.*;
 import java.util.*;
 
-class Vertex {
-	String str;
-	//int dist;
-	Vertex(String str) {//, int dist) {
-		this.str = str;
-		//this.dist = dist;
-	}
-	
-	@Override
-	public boolean equals(Object that) {
-		if (this == that)
-			return true;
-		
-		if (!(that instanceof Vertex)) {
-			return false;
-		}
-		
-		Vertex v = (Vertex) that;
-		return this.str.equals(v.str);
-	}
-}
+
 
 class Graph {
+	class Vertex {
+		String str;
+		//int dist;
+		Vertex(String str) {//, int dist) {
+			this.str = str;
+			//this.dist = dist;
+		}
+		
+		@Override
+		public boolean equals(Object that) {
+			if (this == that)
+				return true;
+			
+			if (!(that instanceof Vertex)) {
+				return false;
+			}
+			
+			Vertex v = (Vertex) that;
+			return this.str.equals(v.str);
+		}
+	}
+	
 	private Map<Vertex, List<Vertex>> adjVertices = new HashMap<Vertex, List<Vertex>>();
 
 	Graph() {}
