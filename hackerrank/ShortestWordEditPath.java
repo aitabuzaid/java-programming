@@ -6,29 +6,9 @@ import java.util.*;
 
 
 class Graph {
-	class Vertex {
-		String str;
-		//int dist;
-		Vertex(String str) {//, int dist) {
-			this.str = str;
-			//this.dist = dist;
-		}
-		
-		@Override
-		public boolean equals(Object that) {
-			if (this == that)
-				return true;
-			
-			if (!(that instanceof Vertex)) {
-				return false;
-			}
-			
-			Vertex v = (Vertex) that;
-			return this.str.equals(v.str);
-		}
-	}
+
 	
-	private Map<Vertex, List<Vertex>> adjVertices = new HashMap<Vertex, List<Vertex>>();
+	private Map<String, List<String>> adjVertices = new HashMap<String, List<String>>();
 
 	Graph() {}
 
@@ -37,19 +17,17 @@ class Graph {
 		//System.out.println(dist);
 		System.out.println(adjVertices);
 		//adjVertices.putIfAbsent(new Vertex(str, dist), new ArrayList<>());
-		adjVertices.putIfAbsent(new Vertex(str), new ArrayList<>());
+		adjVertices.putIfAbsent(str, new ArrayList<String>());
 	}
 
 	//void addEdge(String str1, int dist1, String str2, int dist2) {
 	void addEdge(String str1, String str2) {
-		Vertex v1 = new Vertex(str1);//, dist1);
-		Vertex v2 = new Vertex(str2);//, dist2);
+
 		
 		System.out.println(adjVertices);
-		System.out.println(adjVertices.get(v1));
-		System.out.println(v1);
-		adjVertices.get(v1).add(v2);
-		adjVertices.get(v2).add(v1);
+
+		adjVertices.get(str1).add(str2);
+		adjVertices.get(str2).add(str1);
 	}
 }
 
