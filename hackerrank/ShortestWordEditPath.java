@@ -13,19 +13,12 @@ class Graph {
 	Graph() {}
 
 	void addVertex(String str) {//, int dist) {
-		System.out.println(str);
-		//System.out.println(dist);
-		System.out.println(adjVertices);
-		//adjVertices.putIfAbsent(new Vertex(str, dist), new ArrayList<>());
+		//System.out.println(adjVertices);
 		adjVertices.putIfAbsent(str, new ArrayList<String>());
 	}
 
 	//void addEdge(String str1, int dist1, String str2, int dist2) {
 	void addEdge(String str1, String str2) {
-
-		
-		System.out.println(adjVertices);
-
 		adjVertices.get(str1).add(str2);
 		adjVertices.get(str2).add(str1);
 	}
@@ -39,14 +32,16 @@ class ShortestWordEditPath {
 		Set<String> visited = new HashSet<String>(); 
 		queue.add(source);
 		int dist = 0;
-		System.out.println("test");
+
 		while(!queue.isEmpty()) {
-			System.out.println("test");
+
 			String cur = queue.remove();
+			System.out.println(cur);
 			visited.add(cur);
 			graph.addVertex(cur);//, dist);
 			for (int i = 0; i < words.length; i++) {
 				if (editDistance(cur, words[i]) == 1 && !visited.contains(words[i])) {
+					
 					queue.add(words[i]);
 					graph.addVertex(words[i]);//, dist+1);
 					//graph.addEdge(cur, dist, words[i], dist+1);
@@ -75,7 +70,6 @@ class ShortestWordEditPath {
 		String source = "bit";
 		String target = "dog";
 		String[] words = new String[]{"but", "put", "big", "pot", "pog", "dog", "lot"};
-		System.out.println("test");
 		System.out.println(shortestWordEditPath(source, target, words));
 	}
 }
