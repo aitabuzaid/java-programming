@@ -3,57 +3,36 @@ package hackerrank;
 import java.io.*;
 import java.util.*;
 
-
-
-class Graph {
-
-	
-	private Map<String, List<String>> adjVertices = new HashMap<String, List<String>>();
-
-	Graph() {}
-
-	void addVertex(String str) {//, int dist) {
-		//System.out.println(adjVertices);
-		adjVertices.putIfAbsent(str, new ArrayList<String>());
-	}
-
-	//void addEdge(String str1, int dist1, String str2, int dist2) {
-	void addEdge(String str1, String str2) {
-		adjVertices.get(str1).add(str2);
-		adjVertices.get(str2).add(str1);
-	}
-}
-
 class ShortestWordEditPath {
 	static int shortestWordEditPath(String source, String target, String[] words) {
 		// your code goes here
 		Graph graph = new Graph();
-		Queue<String> queue = new LinkedList<String>();
+		//Queue<String> queue = new LinkedList<String>();
+		Queue<Vertex> queue = new LinkedList<Vertex>();
 		Set<String> visited = new HashSet<String>(); 
-		queue.add(source);
-		int dist = 0;
 
+		int dist = 0;
+		queue.add(new Vertex(source, dist));
 		while(!queue.isEmpty()) {
 
-			String cur = queue.remove();
+			//String cur = queue.remove();
+			Vertex cur = queue.remove();
 			System.out.println(cur);
-			visited.add(cur);
-			graph.addVertex(cur);//, dist);
+			visited.add(cur.str);
+			graph.addVertex(cur.str, dist);
 			for (int i = 0; i < words.length; i++) {
-				if (editDistance(cur, words[i]) == 1 && !visited.contains(words[i])) {
-					
-					queue.add(words[i]);
-					graph.addVertex(words[i]);//, dist+1);
+				if (editDistance(cur.str, words[i]) == 1 && !visited.contains(words[i])) {
+
+					queue.add(new Vertex(words[i], cur.dist+1));
+					graph.addVertex(words[i], cur.dist+1);
 					//graph.addEdge(cur, dist, words[i], dist+1);
-					graph.addEdge(cur, words[i]);
+					graph.addEdge(cur.str, cur.dist, words[i], cur.dist+1);
 					if (editDistance(words[i], target) == 1) {
-						return dist+2;
+						return cur.dist+2;
 					}
 				}
 			}
-			dist++;
 		}
-
 		return -1;
 	}
 
@@ -66,10 +45,43 @@ class ShortestWordEditPath {
 		return dist;
 	}
 
+
+
 	public static void main(String[] args) {
 		String source = "bit";
 		String target = "dog";
 		String[] words = new String[]{"but", "put", "big", "pot", "pog", "dog", "lot"};
 		System.out.println(shortestWordEditPath(source, target, words));
+	}
+
+}
+class Vertex {
+	String str;
+	int dist;
+	Vertex(String str, int dist) {
+		this.str = str;
+		this.dist = dist;
+	}
+}
+
+class Graph {
+
+	Graph(){}
+
+	
+	private Map<Vertex, List<Vertex>> adjVertices = new HashMap<Vertex, List<Vertex>>();
+
+
+	public void addVertex(String str, int dist) {
+		//System.out.println(adjVertices);
+		adjVertices.putIfAbsent(new Vertex(str, dist), new ArrayList<Vertex>());
+	}
+
+	public void addEdge(String str1, int dist1, String str2, int dist2) {
+		//void addEdge(String str1, String str2) {	
+		Vertex v1 = new Vertex(str1, dist1);
+		Vertex v2 = new Vertex(str1, dist1);
+		adjVertices.get(v1).add(v2);
+		adjVertices.get(v2).add(v1);
 	}
 }
