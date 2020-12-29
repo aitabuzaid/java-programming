@@ -22,6 +22,13 @@ class Multiplication {
 	}
 	
 	static String add(String a, String b) {
+		String result = "";
+		for (int i = 0; i < a.length(); i++) {
+			int res = (int)(a.charAt(i))+(int)(b.charAt(i));
+			int car = res/10;
+			res = res%10;
+			result.concat((String)res);
+		}
 		return new String();
 	}
 	
