@@ -29,7 +29,7 @@ class Multiplication {
 			res = res%10;
 			result.concat((String)res);
 		}
-		return new String();
+		return result;
 	}
 	
 	static String sub(String a, String b) {
