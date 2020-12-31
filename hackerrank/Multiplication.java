@@ -22,14 +22,20 @@ class Multiplication {
 	}
 	
 	static String add(String a, String b) {
-		String result = "";
-		for (int i = 0; i < a.length(); i++) {
-			int res = (int)(a.charAt(i))+(int)(b.charAt(i));
-			int car = res/10;
+		StringBuilder result = new StringBuilder();
+		int car = 0;
+		int res;
+		for (int i = a.length()-1; i >= 0; i--) {
+			res = Integer.parseInt(a.substring(i,i+1))+
+					Integer.parseInt(b.substring(i,i+1))+
+					car;
+			car = res/10;
 			res = res%10;
-			result.concat((String)res);
+			result.insert(0, res);
 		}
-		return result;
+		if (car > 0)
+			result.insert(0, car);
+		return result.toString();
 	}
 	
 	static String sub(String a, String b) {
@@ -38,6 +44,7 @@ class Multiplication {
 
 
 	public static void main(String[] args) {
+		System.out.println(add("9999","9999"));
 		
 	}
 
