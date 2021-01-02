@@ -23,6 +23,14 @@ class Multiplication {
 	
 	static String add(String a, String b) {
 		StringBuilder result = new StringBuilder();
+		/*
+		Iterator iter = a.chars().iterator();
+		while(iter.hasNext()) {
+			System.out.println(Integer.toString(iter.next()));
+		}
+		*/
+		
+		int maxLen = Math.max(a.length(), b.length());
 		int car = 0;
 		int res;
 		for (int i = a.length()-1; i >= 0; i--) {
