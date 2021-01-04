@@ -29,18 +29,37 @@ class Multiplication {
 			System.out.println(Integer.toString(iter.next()));
 		}
 		*/
-		
-		int maxLen = Math.max(a.length(), b.length());
+
 		int car = 0;
 		int res;
-		for (int i = a.length()-1; i >= 0; i--) {
+		int i = a.length()-1;
+		int j = b.length()-1;
+		
+		while (i >= 0 && j >= 0) {
 			res = Integer.parseInt(a.substring(i,i+1))+
-					Integer.parseInt(b.substring(i,i+1))+
+					Integer.parseInt(b.substring(j,j+1))+
 					car;
 			car = res/10;
 			res = res%10;
 			result.insert(0, res);
+			i--;
+			j--;
 		}
+		while (i >= 0) {
+			res = Integer.parseInt(a.substring(i,i+1))+car;
+			car = res/10;
+			res = res%10;
+			result.insert(0, res);
+			i--;
+		}
+		while (j >= 0) {
+			res = Integer.parseInt(b.substring(j,j+1))+car;
+			car = res/10;
+			res = res%10;
+			result.insert(0, res);
+			j--;
+		}
+
 		if (car > 0)
 			result.insert(0, car);
 		return result.toString();
@@ -52,7 +71,7 @@ class Multiplication {
 
 
 	public static void main(String[] args) {
-		System.out.println(add("9999","9999"));
+		System.out.println(add("7123","12345"));
 		
 	}
 
