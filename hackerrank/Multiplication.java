@@ -23,12 +23,6 @@ class Multiplication {
 	
 	static String add(String a, String b) {
 		StringBuilder result = new StringBuilder();
-		/*
-		Iterator iter = a.chars().iterator();
-		while(iter.hasNext()) {
-			System.out.println(Integer.toString(iter.next()));
-		}
-		*/
 
 		int car = 0;
 		int res;
@@ -66,12 +60,60 @@ class Multiplication {
 	}
 	
 	static String sub(String a, String b) {
-		return new String();
+		StringBuilder result = new StringBuilder();
+
+		int car = 0;
+		int res;
+		int i = a.length()-1;
+		int j = b.length()-1;
+		int aInt, bInt;
+		while (i >= 0 && j >= 0) {
+			aInt = Integer.parseInt(a.substring(i,i+1));
+			bInt = Integer.parseInt(b.substring(j,j+1));
+			if (aInt-car < bInt) {
+				res = 10+aInt-car-bInt;
+				car = 1;
+			}
+			else {
+				res = aInt-bInt-car;
+				car = 0;
+			}
+			result.insert(0, res);
+			i--;
+			j--;
+		}
+		
+		while (i >= 0) {
+			res = Integer.parseInt(a.substring(i,i+1))-car;
+			car = 0;
+			result.insert(0, res);
+			i--;
+		}
+		
+		int countZero = 0;
+		i = 0;
+		while (Integer.parseInt(result.substring(i,i+1)) == 0) {
+			countZero++;
+			i++;
+		}
+		
+		return result.toString().substring(i);
 	}
 
 
 	public static void main(String[] args) {
-		System.out.println(add("7123","12345"));
+		//System.out.println(add("7123","12345"));
+		System.out.println(sub("72123","12345"));
+		System.out.println(add("59778","12345"));
+		
+		System.out.println(sub("99245","123"));
+		System.out.println(add("99122","123"));
+		
+		System.out.println(sub("100","40"));
+		System.out.println(add("60","40"));
+		
+		System.out.println(sub("1000","960"));
+		System.out.println(add("960","40"));
 		
 	}
 
