@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class Solution {
+public class SherlockAndAnagrams {
 
     // Complete the sherlockAndAnagrams function below.
     static int sherlockAndAnagrams(String s) {
@@ -41,7 +41,7 @@ public class Solution {
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        //BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
         int q = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
@@ -50,12 +50,13 @@ public class Solution {
             String s = scanner.nextLine();
 
             int result = sherlockAndAnagrams(s);
+            System.out.println(result);
 
-            bufferedWriter.write(String.valueOf(result));
-            bufferedWriter.newLine();
+            //bufferedWriter.write(String.valueOf(result));
+            //bufferedWriter.newLine();
         }
 
-        bufferedWriter.close();
+        //bufferedWriter.close();
 
         scanner.close();
     }

@@ -15,13 +15,7 @@ public class MaxToys {
         int count = 0;
         int totalPrice = 0;
         
-        for(int i = 0; i < prices.length; i++) {
-            for (int j = 0; j < prices.length - 1; j++) {
-                if (prices[j] > prices[j+1]) {
-                    swap(prices, j, j+1);
-                }
-            }
-        }
+        quickSort(prices);
         
         for (int i = 0; i < prices.length; i++) {
             if (totalPrice+prices[i] < k) {
@@ -61,9 +55,8 @@ public class MaxToys {
     		else if (arr[j] > pValue)
     			j--;
     		else
-    			swap(arr, i, j);
+    			swap(arr, i++, j--);
     	}
-    	
     	return i;
     }
 

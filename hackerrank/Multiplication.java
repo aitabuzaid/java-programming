@@ -5,20 +5,36 @@ import java.util.*;
 
 class Multiplication {
 	static String mult(String x, String y) {
+		//System.out.println("hi");
+		if (x.length() <= 2) {// || y.length() == 1) {
+			//System.out.println("direct="+String.valueOf(Integer.parseInt(x)*Integer.parseInt(y)));
+			return String.valueOf(Integer.parseInt(x)*Integer.parseInt(y));
+		}
+		//System.out.println(x);
+		//System.out.println(x.length());
 		
-		//if (x.length() == 1 || y.length() == 1) {
-			//(int)x*(int)y;
-		//}
+		//System.out.println(y);
+		//System.out.println(y.length());
+		
 		String a = x.substring(0, x.length()/2);
-		String b = x.substring(x.length()/2+1, x.length());
+		//System.out.println("a "+a);
+		String b = x.substring(x.length()/2);
+		//System.out.println("b "+b);
 		String c = y.substring(0, y.length()/2);
-		String d = y.substring(y.length()/2+1, y.length());
+		//System.out.println("c "+c);
+		String d = y.substring(y.length()/2);
+		//System.out.println("d "+d);
 		String ac = mult(a, c);
+		//System.out.println("ac "+ac);
 		String bd = mult(b, d);
 		String ab_cd = mult(add(a, b), add(c, d));
 		String ad_bc = sub(ab_cd, add(ac, bd));
 		//String result 
-		return new String();
+		String tenN = "0".repeat(x.length());
+		String tenN2 = "0".repeat(x.length()/2);
+		ac = ac.concat(tenN);
+		ad_bc = ad_bc.concat(tenN2);
+		return add(add(ac, ad_bc), bd);
 	}
 	
 	static String add(String a, String b) {
@@ -103,6 +119,7 @@ class Multiplication {
 
 	public static void main(String[] args) {
 		//System.out.println(add("7123","12345"));
+		/*
 		System.out.println(sub("72123","12345"));
 		System.out.println(add("59778","12345"));
 		
@@ -114,7 +131,8 @@ class Multiplication {
 		
 		System.out.println(sub("1000","960"));
 		System.out.println(add("960","40"));
-		
+		*/
+		System.out.println(mult("6548","4040"));
 	}
 
 

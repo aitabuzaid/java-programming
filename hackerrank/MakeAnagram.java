@@ -48,11 +48,7 @@ public class MakeAnagram {
     	for (char ch: mapB.keySet()) {
     		count += mapB.get(ch);
     	}
-    	
     	return count;
-    		
-    	
-
     }
     
 	public static void main(String[] args) {

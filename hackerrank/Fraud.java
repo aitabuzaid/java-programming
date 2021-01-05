@@ -12,7 +12,7 @@ public class Fraud {
 
     // Complete the activityNotifications function below.
     static int activityNotifications(int[] expenditure, int d) {
-    	//LinkedList<Integer> list = new LinkedList<Integer>();
+
     	int[] arr = new int[d];
     	int count = 0;
     	float med;

@@ -28,7 +28,7 @@ public class LuckBalance {
     	Arrays.sort(tempArr);
     	for (int i = 0; i < tempArr.length; i++)
     		if (i < (tempArr.length-k))
-    			count += -(int)tempArr[i];
+    			count -= (int)tempArr[i];
     		else
     			count += (int)tempArr[i];
 
