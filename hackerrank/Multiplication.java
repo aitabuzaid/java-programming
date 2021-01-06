@@ -25,7 +25,7 @@ class Multiplication {
 		String d = y.substring(y.length()/2);
 		//System.out.println("d "+d);
 		String ac = mult(a, c);
-		//System.out.println("ac "+ac);
+		System.out.println("ac "+ac);
 		String bd = mult(b, d);
 		String ab_cd = mult(add(a, b), add(c, d));
 		String ad_bc = sub(ab_cd, add(ac, bd));
@@ -108,11 +108,17 @@ class Multiplication {
 		
 		int countZero = 0;
 		i = 0;
+		
 		while (Integer.parseInt(result.substring(i,i+1)) == 0) {
 			countZero++;
 			i++;
+			if (i == result.length()) {
+				i--;
+				break;
+			}
 		}
-		
+		//if (i == result.length())
+		//	i--;
 		return result.toString().substring(i);
 	}
 
@@ -132,7 +138,9 @@ class Multiplication {
 		System.out.println(sub("1000","960"));
 		System.out.println(add("960","40"));
 		*/
-		System.out.println(mult("6548","4040"));
+		//System.out.println(mult("6548","4040"));
+		System.out.println(mult("3141592653589793238462643383279502884197169399375105820974944592",
+								"2718281828459045235360287471352662497757247093699959574966967627"));
 	}
 
 
