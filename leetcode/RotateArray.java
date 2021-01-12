@@ -1,14 +1,17 @@
 package leetcode;
 
 class RotateArray {
-    public void swap(int[] nums, int j, int l) {
-        int temp = nums[j];
-        nums[j] = nums[l];
-        nums[l] = temp;
-    }
     public void rotate(int[] nums, int k) {
+        
+        int[] res = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {      
+            res[i] = nums[i]; 
+        }
+        int j;
         for (int i = 0; i < nums.length; i++) {
-            swap(nums, i, (i+nums.length-k)%nums.length);
+            j  = ((i+nums.length-k)%nums.length + nums.length)%nums.length;           
+            nums[i] = res[j]; 
+
         }
     }
 }
