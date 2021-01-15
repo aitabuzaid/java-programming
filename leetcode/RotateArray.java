@@ -7,26 +7,26 @@ class RotateArray {
 		int i = 0;
 		int temp = nums[i];
 		int j = (i-k+nums.length) % nums.length;
-		while (j != 0) {
-			//System.out.println(j);
-			nums[i] = nums[j];
-			i = j;
+		int gcd = GCD(nums.length, k);
+		for (int l = 0; l < gcd; l++) {
+			i = l;
+			temp = nums[i];
 			j = (i-k+nums.length) % nums.length;
-		}
-		nums[i] = temp;
-		if (nums.length % 2 == 0 & k % 2 == 0){
-			for (int l = 1; l < 2; l++) {
-				i = l;
-				temp = nums[i];
+			while (j != l) {
+				nums[i] = nums[j];
+				i = j;
 				j = (i-k+nums.length) % nums.length;
-				while (j != l) {
-					nums[i] = nums[j];
-					i = j;
-					j = (i-k+nums.length) % nums.length;
-				}
-				nums[i] = temp;
 			}
+			nums[i] = temp;
 		}
+
+	}
+
+	public static int GCD(int n1, int n2) {
+		if (n2 == 0)
+			return n1;
+
+		return GCD(n2, n1%n2);
 	}
 	public static void main(String[] args) {
 		int[] arr = {1,2,3,4,5,6,7,8,9};
@@ -35,7 +35,8 @@ class RotateArray {
 		for (int i : arr) {
 			System.out.print(i+" ");
 		}
-		
-		
+
+
+
 	}
 }
