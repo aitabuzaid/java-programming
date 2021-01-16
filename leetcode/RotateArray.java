@@ -4,9 +4,7 @@ package leetcode;
 class RotateArray {
 	public static void rotate(int[] nums, int k) {
 		k = k%nums.length;
-		int i = 0;
-		int temp = nums[i];
-		int j = (i-k+nums.length) % nums.length;
+		int temp, i, j;
 		int gcd = GCD(nums.length, k);
 		for (int l = 0; l < gcd; l++) {
 			i = l;
