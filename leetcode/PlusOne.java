@@ -23,12 +23,13 @@ public class PlusOne {
         	for (int i = 0; i < digits.length; i++) {
         		digits2[i+1] = digits[i];
         	}
+        	return digits2;
         }
-        return digits2;
+        return digits;
     }
     
     public static void main(String[] args) {
-    	int[] arr = new int[] {9,9,9,9,9,9};
+    	int[] arr = new int[] {8,9,9,9,9,9};
     	int[] arr2 = plusOne(arr);
     	System.out.println(Arrays.toString(arr2));
     }
