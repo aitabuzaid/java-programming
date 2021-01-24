@@ -4,36 +4,16 @@ import java.util.Arrays;
 
 public class MoveZeros {
     public static void moveZeroes(int[] nums) {
-        moveZeroes(nums, 0, nums.length-1);
+        for (int i = 0; i < nums.length; i++) {
+        	if (nums[i] == 0) {
+        		int j = i+1;
+        		while (nums[j]) 
+        	}
+        }
         
     }
     
-    public static void moveZeroes(int[] nums, int min, int max) {
-    	System.out.println(min+" "+ max);
-    	if (max <= min)
-    		return;
-    	int mid = (min + max)/2;
-    	moveZeroes(nums, min, mid);
-    	moveZeroes(nums, mid+1, max);
-    	mid++;
-    	/*
-    	while (nums[min] != 0 && max < )
-    		min++;
-    	System.out.println(min+" "+ max);
-    	while (nums[mid] != 0)
-    		swap(nums, min++, mid++);
-    	*/
-    	
-    	while (min < max) {
-    		if (nums[min] != 0)
-    			min++;
-    		else if (nums[mid] != 0 && mid <= max) {
-    			swap(nums, min++, mid++);
-    		}
-    		else
-    			break;
-    	}
-    }
+
     public static void swap(int[] nums, int i, int j) {
     	System.out.println("swap: "+i+" "+ j);
     	int temp = nums[i];
@@ -42,7 +22,10 @@ public class MoveZeros {
     }
     
     public static void main(String[] args) {
-    	int[] arr = new int[] {1,3,2,0,4,9,0,0,5};
+    	//int[] arr = new int[] {1,3,2,0,4,9,0,0,5};
+    	//int[] arr = new int[] {1,3,2,2,4,9,6,7,5};
+    	//int[] arr = new int[] {0,1,0,0,0,4,9,0,0,0,5,6,0,0,7};
+    	int[] arr = new int[] {0,0,0,0,0,0,0,9,6,5,9,8,1,5,7};
     	moveZeroes(arr);
     	System.out.println(Arrays.toString(arr));
     }
