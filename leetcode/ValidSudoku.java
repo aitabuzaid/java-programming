@@ -18,21 +18,21 @@ public class ValidSudoku {
 					else
 						return false;
 				
-					if (!map.containsKey(j+9)){
-                        map.put(j+9, new HashSet<Character>());
-                        map.get(j+9).add(board[i][j]);
+					if (!map.containsKey((char) (j+9))){
+                        map.put((char) (j+9), new HashSet<Character>());
+                        map.get((char) (j+9)).add(board[i][j]);
                     }
-					else if (!map.get(j+9).contains(board[i][j])) 
-						map.get(j+9).add(board[i][j]);
+					else if (!map.get((char) (j+9)).contains(board[i][j])) 
+						map.get((char) (j+9)).add(board[i][j]);
 					else
 						return false;
 						
-					if (!map.containsKey(i/3+3*(j/3)+18)){
-                        map.put(i/3+3*(j/3)+18, new HashSet<Character>());
-                        map.get(i/3+3*(j/3)+18).add(board[i][j]);
+					if (!map.containsKey((char) (i/3+3*(j/3)+18))){
+                        map.put((char) (i/3+3*(j/3)+18), new HashSet<Character>());
+                        map.get((char) (i/3+3*(j/3)+18)).add(board[i][j]);
                     }
-                    else if (!map.get(i/3+3*(j/3)+18).contains(board[i][j])) 
-						map.get(i/3+3*(j/3)+18).add(board[i][j]);
+                    else if (!map.get((char) (i/3+3*(j/3)+18)).contains(board[i][j])) 
+						map.get((char) (i/3+3*(j/3)+18)).add(board[i][j]);
 					else
 						return false;
 				}
