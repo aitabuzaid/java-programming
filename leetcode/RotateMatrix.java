@@ -2,7 +2,7 @@ package leetcode;
 
 public class RotateMatrix {
 
-    public void rotate(int[][] matrix) {
+    public static void rotate(int[][] matrix) {
     	int temp;
     	int size = matrix.length-1;
     	for (int k = 0; k < size/2; k++) {
@@ -20,7 +20,8 @@ public class RotateMatrix {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
+		rotate(matrix);
 	}
 
 }
