@@ -7,11 +7,11 @@ public class RotateMatrix {
 		int size = matrix.length-1;
 		for (int k = 0; k < size/2; k++) {
 			for (int l = 0; l < size-(2*k); l++) {
-				temp = matrix[l][l];
-				matrix[l][l] = matrix[size-l][l];
-				matrix[size-l][l] = matrix[size-l][size-l];
-				matrix[size-l][size-l] = matrix[l][size-l];
-				matrix[l][size-l] = temp;
+				temp = matrix[0][l];
+				matrix[0][l] = matrix[size-l][0];
+				matrix[size-l][0] = matrix[size][size-l];
+				matrix[size][size-l] = matrix[l][size];
+				matrix[l][size] = temp;
 				//for (int m = 0; m < 3; m++) {
 				//}
 			}
