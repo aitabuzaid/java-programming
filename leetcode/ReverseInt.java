@@ -12,6 +12,8 @@ public class ReverseInt {
 			
 		while (x > 0) {
 			l = x % 10;
+			if (res*10+l < res)
+				return 0;
 			res = res*10 + l;
 			x = x / 10;
 		}
@@ -21,9 +23,10 @@ public class ReverseInt {
 		else
 			return res;
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int test = -1233410;
+		int test = 1534236469;//1233410;
 		System.out.println(reverse(test));
 	}
 
