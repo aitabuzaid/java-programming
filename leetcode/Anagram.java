@@ -18,13 +18,24 @@ public class Anagram {
 			tHash.put(c, tHash.getOrDefault(c, 0)+1);
 		}
 		
+		for (char key : sHash.keySet()) {
+			if (!tHash.containsKey(key))
+				return false;
+			if (sHash.get(key) != tHash.get(key))
+				return false;
+			tHash.remove(key);
+		}
+		
+		if (!tHash.isEmpty())
+			return false;
+		
 		return true;
 	}
 
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.print("hi");
 	}
 
 }
