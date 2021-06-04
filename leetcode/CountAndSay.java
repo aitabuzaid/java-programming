@@ -1,4 +1,5 @@
 package leetcode;
+import java.util.*;
 
 public class CountAndSay {
 
@@ -8,11 +9,13 @@ public class CountAndSay {
 			return "1";
 
 		String prev = "1";
-		String res = "";
+		StringBuilder res = null;
+		
+		//String res = "";
 
 		for (int j = 2; j <= n; j++){
 			int count = 1;
-			res = "";
+			res = new StringBuilder();
 
 			int i;
 			for (i = 0; i < prev.length(); i++){
@@ -23,19 +26,19 @@ public class CountAndSay {
 					count++;
 				}
 				else{
-					res = res.concat(String.valueOf(count)).concat(Character.toString(prev.charAt(i-1)));
+					res = res.append(count).append(prev.charAt(i-1));
 					count = 1;
 				}
 
 			}
 
-			res = res.concat(String.valueOf(count)).concat(Character.toString(prev.charAt(i-1)));
-			prev = res;
+			res = res.append(count).append(prev.charAt(i-1));
+			prev = res.toString();
 		}
 
 
 
-		return res;
+		return res.toString();
 	}
 
 	public static void main(String[] args) {
