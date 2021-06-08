@@ -15,13 +15,15 @@ public class ReverseList {
 		p1 = head;
 		p2 = head.next;
 		p3 = head.next.next;
-		
+		p1.next = null;
 		while (p3 != null) {
+            
 			p2.next = p1;
 			p1 = p2;
 			p2 = p3;
 			p3 = p3.next;
 		}
+        //p1.next = null;
 		p2.next = p1;
 		head = p2;
 		return head;
