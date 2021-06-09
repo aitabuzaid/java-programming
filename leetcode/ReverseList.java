@@ -13,7 +13,15 @@ public class ReverseList {
 	public static ListNode reverseList(ListNode head) {
 		ListNode p1, p2, p3;
 		p1 = head;
+        
+        if (p1 == null)
+            return null;
+        
 		p2 = head.next;
+        
+        if (p2 == null)
+            return head;
+        
 		p3 = head.next.next;
 		p1.next = null;
 		while (p3 != null) {
