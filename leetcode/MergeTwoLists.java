@@ -30,8 +30,16 @@ public class MergeTwoLists {
 				c2 = temp;				
 			}
 		}
-		if (c2 != null)
-			c1Prev.next = c2;
+		if (c1Prev == null) {
+			if (c1 == null)
+				return c2;
+			else
+				return c1;
+		}
+		else if (c2 != null) {
+				c1Prev.next = c2;
+		}
+		
 		return l1;
 	}
 
